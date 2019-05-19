@@ -47,9 +47,9 @@ function liquibase#sqlRollbackScript()
       continue
     endif
     if dbtype == 'mysql'
-      call append(b:current, RollbackMysqlStatement(b:currentLine))
+      call append(b:current, liquibase#rollbackMysqlStatement(b:currentLine))
     else 
-      call append(b:current, RollbackStatement(b:currentLine))
+      call append(b:current, liquibase#rollbackStatement(b:currentLine))
     endif
     execute "normal! j"
   endw
