@@ -32,7 +32,7 @@ function liquibase#rollbackMysqlStatement(statement)
   endif
 endfunction
 
-function liquibase#SqlRollbackScript()
+function liquibase#sqlRollbackScript()
   let dbtype = split(expand('%:t:r'), '\v\.')[-1]
   execute "normal! gg"
   while 1
