@@ -29,6 +29,10 @@ function liquibase#rollbackMysqlStatement(statement)
       let rollback = rollback + tokens[0:2] + ['DROP'] + tokens[6:7] + [tokens[5]]
       return join(rollback) . ';'
     endif
+    if tokens[6] ==? 'UNIQUE'
+      let rollback = rollback + tokens[0:2] + ['DROP', 'INDEX'] + [tokens[5]]
+      return join(rollback) . ';'
+    endif
   endif
 endfunction
 
